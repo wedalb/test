@@ -8,7 +8,6 @@ import time
 from keyauth import api
 import hashlib
 from datetime import datetime
-from PIL import Image, ImageTk
 
 def getchecksum():
     md5_hash = hashlib.md5()
@@ -173,19 +172,12 @@ bg_color = "#000000"
 
 app.configure(bg=bg_color)
 
-# Open the image using Pillow
-img_path = 'hwid-logo.png'
-image = Image.open(img_path)
 
-small_image = image.resize((200, 150), Image.Resampling.LANCZOS)
-img = ImageTk.PhotoImage(small_image)
-img_label = tk.Label(app, image=img, bg=bg_color)
-img_label.grid(row=0, column=6, padx=10, pady=10)
 
 license_label = tk.Label(app, text="Enter your license:", font=("Arial", 14), bg=bg_color)
 license_label.grid(row=3, column=4, padx=10, pady=10)
 
-license_entry = tk.Entry(app, font=("Arial", 14))
+license_entry = tk.Entry(app, font=("Arial", 14), fg="black")
 license_entry.grid(row=3, column=6, padx=10, pady=10)
 
 submit_button = tk.Button(app, text="Submit", command=check_license, font=("Arial", 14), bg=bg_color)
